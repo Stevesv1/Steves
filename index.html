@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steve's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lexend', sans-serif;
+        }
+
+        body {
+            background: #0a0a0a;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .main-container {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 3rem;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+            position: fixed;
+            top: 10%;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-image: url('chutiya.jpg');
+            background-size: cover;
+            border: 3px solid #fff;
+            box-shadow: 0 0 20px rgba(255,255,255,0.3);
+            transition: transform 0.3s ease;
+            position: fixed;
+            top: 25%;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
+
+        .bulbs-top {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            z-index: 3;
+        }
+
+        .bulb {
+            position: relative;
+            width: 30px;
+            height: 40px;
+            animation: bulbGlow 2s infinite;
+            margin: 0 15px;
+        }
+
+        .bulb::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 15px;
+            background: #444;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .bulb::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: currentColor;
+            border-radius: 50%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px currentColor;
+        }
+
+        @keyframes bulbGlow {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        .social-links {
+            position: fixed;
+            top: 55%;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+            color: #00ff9d;
+        }
+
+        .friends-gallery {
+            position: fixed;
+            bottom: 25%;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .friend-card {
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid #28dce2;
+            position: relative;
+        }
+
+        .friend-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .friend-card:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+
+        .love {
+            position: absolute;
+            pointer-events: none;
+            font-size: 20px;
+            animation: float 1s ease-out;
+            opacity: 0;
+        }
+        .music-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            color: rgb(248, 12, 12);
+            font-size: 20px;
+            opacity: 0.5;
+            z-index: 4;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="bulbs-top" id="bulbsContainer"></div>
+    
+    <div class="main-container">
+        <h1>STEVE</h1>
+        <div class="profile-img"></div>
+        
+        <div class="social-links">
+            <a href="https://x.com/stevesv12" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://t.me/stevesv1" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://discord.com/users/1065283157785587833" target="_blank"><i class="fab fa-discord"></i></a>
+        </div>
+
+        <div class="friends-gallery">
+            <a href="https://x.com/Zun2025" class="friend-card" target="_blank">
+                <img src="ZunXBT.jpg" alt="Zun">
+            </a>
+            <a href="https://x.com/JiarulShaikh8" class="friend-card" target="_blank">
+                <img src="Jiyarul.jpg" alt="Jiyarul">
+            </a>
+            <a href="https://x.com/Barrel_0x" class="friend-card" target="_blank">
+                <img src="Barrel.jpg" alt="Barrel">
+            </a>
+        </div>
+    </div>
+
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="Steves.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Particles.js config
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80 },
+                color: { value: '#ffffff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // Create RGB bulbs
+        function createBulbs() {
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff'];
+            const container = document.getElementById('bulbsContainer');
+            
+            for(let i = 0; i < 8; i++) {
+                const bulb = document.createElement('div');
+                bulb.className = 'bulb';
+                bulb.style.color = colors[i%5];
+                bulb.style.animationDuration = Math.random() * 2 + 1 + 's';
+                container.appendChild(bulb);
+            }
+        }
+        createBulbs();
+
+        // Love mouse effect
+        document.addEventListener('mousemove', function(e) {
+            const love = document.createElement('div');
+            love.className = 'love';
+            love.innerHTML = '❤️';
+            love.style.left = e.pageX + 'px';
+            love.style.top = e.pageY + 'px';
+            document.body.appendChild(love);
+            setTimeout(() => love.remove(), 1000);
+        });
+
+        const audio = document.getElementById('backgroundMusic');
+        const musicIndicator = document.getElementById('musicIndicator');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if(isPlaying) {
+                audio.pause();
+            } else {
+                audio.play().catch(error => {
+                    console.log('Audio playback failed:', error);
+                });
+            }
+            isPlaying = !isPlaying;
+            musicIndicator.style.opacity = isPlaying ? 1 : 0.5;
+        }
+
+        audio.play().then(() => {
+            isPlaying = true;
+            musicIndicator.style.opacity = 1;
+        }).catch(() => {
+            document.addEventListener('click', toggleMusic, { once: true });
+        });
+        document.addEventListener('click', toggleMusic);
+    </script>
+</body>
+</html>
